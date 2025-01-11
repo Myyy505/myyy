@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" href="img/logo.png" />
 </head>
 
-<body class="bg-danger-subtle">
+<body class="bg-secondary">
     <div class="container mt-5 pt-5">
         <div class="row">
             <div class="col-12 col-sm-8 col-md-6 m-auto">
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="text" name="user" class="form-control my-4 py-2 rounded-4" placeholder="Username" />
                             <input type="password" name="pass" class="form-control my-4 py-2 rounded-4" placeholder="Password" />
                             <div class="text-center my-3 d-grid">
-                                <button class="btn btn-danger rounded-4">Login</button>
+                                <button class="btn btn-dark rounded-4">Login</button>
                             </div>
                         </form>
 

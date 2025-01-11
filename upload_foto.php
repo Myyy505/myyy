@@ -17,7 +17,7 @@ function upload_foto($File){
 	$Allowed = array('jpg', 'png', 'gif', 'jpeg');  
 
 	// Check file size
-	if ($FileSize > 1000000) {
+	if ($FileSize > 10000000) {
 		$message .= "Sorry, your file is too large, max 1GB. ";
 		$uploadOk = 0;
 	}

@@ -35,9 +35,9 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
     <!-- nav begin -->
-    <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top bg-info">
+    <nav class="navbar navbar-expand-sm sticky-top bg-secondary">
     <div class="container">
-        <a class="navbar-brand" href="">Admin Room</a>
+        <a class="navbar-brand text-light" href="">Admin Room</a>
         <button
         class="navbar-toggler"
         type="button"
@@ -52,19 +52,19 @@ if (!isset($_SESSION['username'])) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-dark">
             <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=dashboard">Dashboard</a>
+                <a class="nav-link text-light" href="admin.php?page=dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=article">Article</a>
+                <a class="nav-link text-light" href="admin.php?page=article">Article</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+                <a class="nav-link text-light" href="admin.php?page=gallery">Gallery</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?page=index">Homepage</a>
+                <a class="nav-link text-light" href="index.php?page=index">Homepage</a>
             </li> 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-dark fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?= $_SESSION['username']?>
                 </a>
                 <ul class="dropdown-menu">
@@ -83,12 +83,12 @@ if (!isset($_SESSION['username'])) {
         <?php
         if(isset($_GET['page'])){
         ?>
-            <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle"><?= ucfirst($_GET['page'])?></h4>
+            <h4 class="lead display-6 pb-2 border-bottom border-secondary"><?= ucfirst($_GET['page'])?></h4>
             <?php
             include($_GET['page'] .".php");
         }else{
         ?>
-            <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle">Dashboard</h4>
+            <h4 class="lead display-6 pb-2 border-bottom border-secondary">Dashboard</h4>
             <?php
             include("dashboard.php");
         }
@@ -97,19 +97,19 @@ if (!isset($_SESSION['username'])) {
 </section>
 <!-- content end -->
     <!-- footer begin -->
-    <footer class="text-center p-5 bg-danger-subtle">
+    <footer class="text-center p-5 bg-secondary">
     <div>
         <a href="https://www.instagram.com/udinusofficial"
-        ><i class="bi bi-instagram h2 p-2 text-dark"></i
+        ><i class="bi bi-instagram h2 p-2 text-light"></i
         ></a>
         <a href="https://twitter.com/udinusofficial"
-        ><i class="bi bi-twitter h2 p-2 text-dark"></i
+        ><i class="bi bi-twitter h2 p-2 text-light"></i
         ></a>
         <a href="https://wa.me/+62812685577"
-        ><i class="bi bi-whatsapp h2 p-2 text-dark"></i
+        ><i class="bi bi-whatsapp h2 p-2 text-light"></i
         ></a>
     </div>
-    <div>Myyy&copy; 2024</div>
+    <div class="text-light">Myyy&copy; 2024</div>
     </footer>
     <!-- footer end -->
     <script
@@ -118,4 +118,4 @@ if (!isset($_SESSION['username'])) {
     crossorigin="anonymous"
     ></script>
 </body>
-</html> 
+</html>

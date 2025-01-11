@@ -13,7 +13,7 @@ include "koneksi.php";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 
     <style>
-      #home {
+        #home {
         background-image: url(img/nav.jpg);
         background-size: cover;
         background-position: center;
@@ -22,7 +22,7 @@ include "koneksi.php";
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg " style="background-color: var(--bs-body-bg);">
+    <nav class="navbar navbar-expand-lg" style="background-color: var(--bs-body-bg);">
       <div class="container">
         <a class="navbar-brand" href="#">Kabar_Bola</a>
         <button
@@ -77,219 +77,212 @@ include "koneksi.php";
       </div>
     </section>
 
-      <!-- article begin -->
+    <!-- article begin -->
     <section id="article" class="text-center p-5">
-      <div class="container">
-        <h1 class="fw-bold display-4 pb-3">article</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-          <?php
-          $sql = "SELECT * FROM article ORDER BY tanggal DESC";
-          $hasil = $conn->query($sql); 
-
-          while($row = $hasil->fetch_assoc()){
-          ?>
-            <div class="col">
-              <div class="card h-100">
-                <img src="img/<?= $row["gambar"]?>" class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title"><?= $row["judul"]?></h5>
-                  <p class="card-text">
-                    <?= $row["isi"]?>
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-body-secondary">
-                    <?= $row["tanggal"]?>
-                  </small>
-                </div>
-              </div>
-            </div>
+        <div class="container">
+            <h1 class="fw-bold display-4 pb-3">article</h1>
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
             <?php
-          }
-          ?> 
+            $sql = "SELECT * FROM article ORDER BY tanggal DESC";
+            $hasil = $conn->query($sql); 
+
+            while($row = $hasil->fetch_assoc()){
+            ?>
+                <div class="col">
+                <div class="card h-100">
+                    <div class="ratio ratio-4x3"> <!-- Tambahkan rasio -->
+                    <img src="img/<?= $row["gambar"]?>" class="card-img-top img-fluid" alt="..." />
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title"><?= $row["judul"]?></h5>
+                    <p class="card-text">
+                        <?= $row["isi"]?>
+                    </p>
+                    </div>
+                    <div class="card-footer">
+                    <small class="text-body-secondary">
+                        <?= $row["tanggal"]?>
+                    </small>
+                    </div>
+                </div>
+                </div>
+                <?php
+            }
+            ?> 
+            </div>
         </div>
-      </div>
     </section>
     <!-- article end -->
       
     <section id="gallery" class="container my-5">
-      <h2 class="text-center mb-4"><b>Gallery</b></h2>
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-            <?php
-            $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
-            $hasil = $conn->query($sql); 
-            $total_images = $hasil->num_rows;
-            $counter = 0;
-            while($row = $hasil->fetch_assoc()){
-                $active_class = ($counter == 0) ? 'active' : ''; // Add 'active' class to the first item
-                echo '<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $counter . '" class="' . $active_class . '" aria-current="true" aria-label="Slide ' . ($counter + 1) . '"></button>';
-                $counter++;
-            }
-            ?>
-        </div>
-        
-        <div class="carousel-inner">
-            <?php
-            $hasil->data_seek(0); // Reset the result pointer
-            $counter = 0;
-            while($row = $hasil->fetch_assoc()){
-                $active_class = ($counter == 0) ? 'active' : ''; // Add 'active' class to the first item
-                echo '<div class="carousel-item ' . $active_class . '">';
-                echo '<img src="img/' . $row["gambar"] . '" class="d-block w-100" alt="...">';
-                echo '<div class="carousel-caption d-none d-md-block">';
-                echo '<h5>' . $row["judul"] . '</h5>';
+        <h2 class="text-center mb-4"><b>Gallery</b></h2>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <?php
+                    $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+                    $hasil = $conn->query($sql); 
+                    $total_images = $hasil->num_rows;
+                    $counter = 0;
+                    while($row = $hasil->fetch_assoc()){
+                        $active_class = ($counter == 0) ? 'active' : '';
+                        echo '<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $counter . '" class="' . $active_class . '" aria-current="true" aria-label="Slide ' . ($counter + 1) . '"></button>';
+                        $counter++;
+                    }
+                    ?>
+                </div>
                 
-                echo '</div>';
-                echo '</div>';
-                $counter++;
-            }
-            ?>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+                <div class="carousel-inner">
+                    <?php
+                    $hasil->data_seek(0); // Reset pointer
+                    $counter = 0;
+                    while($row = $hasil->fetch_assoc()){
+                        $active_class = ($counter == 0) ? 'active' : '';
+                        echo '<div class="carousel-item ' . $active_class . '">';
+                        echo '<div class="ratio ratio-16x9">'; // Rasio aspek tetap untuk gambar
+                        echo '<img src="img/' . $row["gambar"] . '" class="d-block w-100 img-fluid" alt="' . $row["judul"] . '">';
+                        echo '</div>';
+                        echo '<div class="carousel-caption d-none d-md-block">';
+                        echo '<h5>' . $row["judul"] . '</h5>';
+                        echo '</div>';
+                        echo '</div>';
+                        $counter++;
+                    }
+                    ?>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
     </section>
 
-    <section id="schedule" class="text-start p-5 bg-body-light">
-    <div class="container-schedule table-responsive">
-        <div class="container-h2">
-        <h2 class="fw-bold text-center mb-4">Schedule</h2>
+        <section id="schedule" class="text-start p-5 bg-body-light">
+        <div class="container-schedule table-responsive">
+            <div class="container-h2">
+                <h2 class="fw-bold text-center mb-4">Schedule</h2>
 
-        <!-- Tabel versi HP -->
-        <div class="d-block d-md-none">
-            <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">SENIN</div>
-                    <li class="list-group-item">Technopreurrship 12.30-14.10 | Kulino.</li>
-                    <li class="list-group-item">Pendidikan Pancasila 14.10-15.40 | Aula.H.7</li>
-                </ul>
+                <!-- Tabel versi HP -->
+                <div class="d-block d-md-none">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">SENIN</div>
+                                    <li class="list-group-item">Technopreurrship 12.30-14.10 | Kulino.</li>
+                                    <li class="list-group-item">Pendidikan Pancasila 14.10-15.40 | Aula.H.7</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">SELASA</div>
+                                    <li class="list-group-item">Basis Data 08.40-10.20 | H.4.1</li>
+                                    <li class="list-group-item">Logika Informatika 12.30-15.00 | H.4.9</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">RABU</div>
+                                    <li class="list-group-item">Sistem Operasi 08.40-10.20 | H.4.8</li>
+                                    <li class="list-group-item">Kalkulus 11.00-13.30</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">KAMIS</div>
+                                    <li class="list-group-item">Probalitas Data Statistik 08.40-10.20 | H.4.9</li>
+                                    <li class="list-group-item">Basis Data 13.20-15.30 | D.2.J</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">JUMAT</div>
+                                    <li class="list-group-item">Rekayasa Perangkat Lunak 07.20-09.30 | H.5.3</li>
+                                    <li class="list-group-item">Fisika 09.30-11.30 | H.5.6</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <div class="card mb-3 text-center" style="filter: invert(1);">SABTU</div>
+                                    <li class="list-group-item">Dasar Komputasi 09.30-11.20 | D.3.M</li>
+                                    <li class="list-group-item">Keamanan Data 12.30-15.20 | D.3.M</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">SELASA</div>
-                    <li class="list-group-item">Basis Data 08.40-10.20 | H.4.1</li>
-                    <li class="list-group-item">Logika Informatika 12.30-15.00 | H.4.9</li>
-                </ul>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">RABU</div>
-                    <li class="list-group-item">Sistem Operasi 08.40-10.20 | H.4.8</li>
-                    <li class="list-group-item">Kalkulus 11.00-13.30</li>
-                </ul>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">KAMIS</div>
-                    <li class="list-group-item">Probalitas Data Statistik 08.40-10.20 | H.4.9</li>
-                    <li class="list-group-item">Basis Data 13.20-15.30 | D.2.J</li>
-                </ul>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">JUMAT</div>
-                    <li class="list-group-item">Rekayasa Perangkat Lunak 07.20-09.30 | H.5.3</li>
-                    <li class="list-group-item">Fisika 09.30-11.30 | H.5.6</li>
-                </ul>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                <ul class="list-group list-group-flush">
-                    <div class="card text-bg-danger mb-3 text-center">SABTU</div>
-                    <li class="list-group-item">Dasar Komputasi 09.30-11.20 | D.3.M</li>
-                    <li class="list-group-item">Keamanan Data 12.30-15.20 | D.3.M</li>
-                </ul>
-                </div>
-            </div>
-            </div>
-        </div>
 
-        <!-- Tabel versi komputer -->
-        <div class="d-none d-md-block">
-            <div class="d-flex justify-content-center pt-3 gap-5">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">SENIN</div>
-                <li class="list-group-item">Technopreurrship 12.30-14.10 | Kulino.</li>
-                <li class="list-group-item">Pendidikan Pancasila 14.10-15.40 | Aula.H.7</li>
-                </ul>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">SELASA</div>
-                <li class="list-group-item">Basis Data 08.40-10.20 | H.4.1</li>
-                <li class="list-group-item">Logika Informatika 12.30-15.00 | H.4.9</li>
-                </ul>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">RABU</div>
-                <li class="list-group-item">Sistem Operasi 08.40-10.20 | H.4.8</li>
-                <li class="list-group-item">Kalkulus 11.00-13.30</li>
-                </ul>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">KAMIS</div>
-                <li class="list-group-item">Probalitas Data Statistik 08.40-10.20 | H.4.9</li>
-                <li class="list-group-item">Basis Data 13.20-15.30 | D.2.J</li>
-                </ul>
-            </div>
-            </div>
-            <div class="d-flex justify-content-start pt-3 gap-5">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">JUMAT</div>
-                <li class="list-group-item">Rekayasa Perangkat Lunak 07.20-09.30 | H.5.3</li>
-                <li class="list-group-item">Fisika 09.30-11.30 | H.5.6</li>
-                </ul>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                <div class="card text-bg-danger mb-3 text-center">SABTU</div>
-                <li class="list-group-item">Dasar Komputasi 09.30-11.20 | D.3.M</li>
-                <li class="list-group-item">Keamanan Data 12.30-15.20 | D.3.M</li>
-                </ul>
-            </div>
+                <!-- Tabel versi komputer -->
+                <div class="d-none d-md-block">
+                    <div class="d-flex justify-content-center pt-3 gap-5">
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">SENIN</div>
+                                <li class="list-group-item">Technopreurrship 12.30-14.10 | Kulino.</li>
+                                <li class="list-group-item">Pendidikan Pancasila 14.10-15.40 | Aula.H.7</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">SELASA</div>
+                                <li class="list-group-item">Basis Data 08.40-10.20 | H.4.1</li>
+                                <li class="list-group-item">Logika Informatika 12.30-15.00 | H.4.9</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">RABU</div>
+                                <li class="list-group-item">Sistem Operasi 08.40-10.20 | H.4.8</li>
+                                <li class="list-group-item">Kalkulus 11.00-13.30</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">KAMIS</div>
+                                <li class="list-group-item">Probalitas Data Statistik 08.40-10.20 | H.4.9</li>
+                                <li class="list-group-item">Basis Data 13.20-15.30 | D.2.J</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start pt-3 gap-5">
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">JUMAT</div>
+                                <li class="list-group-item">Rekayasa Perangkat Lunak 07.20-09.30 | H.5.3</li>
+                                <li class="list-group-item">Fisika 09.30-11.30 | H.5.6</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                                <div class="card mb-3 text-center" style="filter: invert(1);">SABTU</div>
+                                <li class="list-group-item">Dasar Komputasi 09.30-11.20 | D.3.M</li>
+                                <li class="list-group-item">Keamanan Data 12.30-15.20 | D.3.M</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
     </section>
 
-    <section id="About Me" class="py-5 bg-info">
+
+
+
+    <section id="About Me" class="py-5 border-top border-bottom" style="background-color: var(--bs-body-bg);">
       <div class="container">
         <h2 class="text-center">About Me</h2>
         <div class="row align-items-center justify-content-center">

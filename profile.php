@@ -85,7 +85,7 @@ if (isset($_POST['logout'])) {
 ?>
 
 <div class="container">
-    <h2 class="text-center fw-bold display-6">Profil Saya</h2>
+    <h2 class="text-center fw-bold display-6">Profile Saya</h2>
     
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -118,7 +118,7 @@ if (isset($_POST['logout'])) {
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" name="simpan" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="submit" name="simpan" class="btn btn-success">Simpan Perubahan</button>
                         </div>
                     </form>
 
