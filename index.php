@@ -14,7 +14,7 @@ include "koneksi.php";
 
     <style>
         #home {
-        background-image: url(img/nav.jpg);
+        background-image: url(img/54.jpg);
         background-size: cover;
         background-position: center;
         color: white;

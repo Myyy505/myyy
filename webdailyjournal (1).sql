@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jan 2025 pada 17.39
+-- Waktu pembuatan: 12 Jan 2025 pada 08.39
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -72,8 +72,8 @@ INSERT INTO `gallery` (`id`, `judul`, `isi`, `gambar`, `tanggal`, `username`) VA
 (2, 'Ronaldo', 'Isi konten Gallery', 'gallery 1.jpg', '2025-01-30 20:21:23', 'admin'),
 (3, 'vini jr', 'Isi konten Gallery', 'gallery 2.jpg', '2025-01-31 20:21:23', 'admin'),
 (4, 'sty', 'Isi konten Gallery', 'sty.jpg', '2025-01-28 20:21:23', 'admin'),
-(13, 'MU', 'isi konten artikel', '4e029fa3e7717df9342aa867c663241c.jpg', '2025-01-24 23:36:36', 'admin'),
-(14, 'MU', 'isi konten artikel', 'ejpg.jpg', '2025-01-31 23:36:36', 'admin');
+(13, 'MU', 'isi konten artikel', '54.jpg', '2025-01-24 23:36:36', 'admin'),
+(14, 'MU', 'isi konten artikel', '45.jpg', '2025-01-31 23:36:36', 'admin');
 
 -- --------------------------------------------------------
 
